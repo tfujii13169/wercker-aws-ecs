@@ -21,6 +21,7 @@ parser.add_argument('--region', dest='region', default='us-east-1')
 parser.add_argument('--task-definition-name', dest='task_definition_name', required=True)
 parser.add_argument('--task-definition-file', dest='task_definition_file', required=True)
 parser.add_argument('--task-definition-volumes-file', dest='task_definition_volumes_file', required=False)
+parser.add_argument('--task-execution-role', dest='task_execution_role', required=False)
 parser.add_argument('--cluster-name', dest='cluster_name', required=False)
 parser.add_argument('--service-name', dest='service_name', required=False)
 args = parser.parse_args()
@@ -32,9 +33,12 @@ try:
     ecs = ECSService(access_key=args.key, secret_key=args.secret, region=args.region)
     success("Configuring AWS succeeded")
 
+    if not args.task_execution_role:
+        sys.exit(0)
+
     # Step: Register New Task Definition
     h1("Step: Register New Task Definition")
-    response = ecs.register_task_definition(family=args.task_definition_name, file=args.task_definition_file, volumes=args.task_definition_volumes_file)
+    response = ecs.register_task_definition(family=args.task_definition_name, executionRoleArn=args.task_execution_role, file=args.task_definition_file, volumes=args.task_definition_volumes_file)
     task_definition_arn = response.get('taskDefinition').get('taskDefinitionArn')
     success("Registering task definition '%s' succeeded" % task_definition_arn)
 

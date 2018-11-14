@@ -73,7 +73,8 @@ if [ -z "$WERCKER_AWS_ECS_SERVICE_NAME" ] && [ -z "$WERCKER_AWS_ECS_CLUSTER_NAME
     --region "${WERCKER_AWS_ECS_REGION:-us-east-1}" \
     --task-definition-name "$WERCKER_AWS_ECS_TASK_DEFINITION_NAME" \
     --task-definition-file "$WERCKER_AWS_ECS_TASK_DEFINITION_FILE" \
-    --task-definition-volumes-file "$WERCKER_AWS_ECS_TASK_DEFINITION_VOLUMES_FILE"
+    --task-definition-volumes-file "$WERCKER_AWS_ECS_TASK_DEFINITION_VOLUMES_FILE" \
+    --task-execution-role "$WERCKER_AWS_ECS_TASK_EXECUTION_ROLE"
 elif [ -z "$WERCKER_AWS_ECS_SERVICE_NAME" ]; then
   python "$WERCKER_STEP_ROOT/main.py" \
     --key "$WERCKER_AWS_ECS_KEY" \
@@ -82,7 +83,8 @@ elif [ -z "$WERCKER_AWS_ECS_SERVICE_NAME" ]; then
     --cluster-name "$WERCKER_AWS_ECS_CLUSTER_NAME" \
     --task-definition-name "$WERCKER_AWS_ECS_TASK_DEFINITION_NAME" \
     --task-definition-file "$WERCKER_AWS_ECS_TASK_DEFINITION_FILE" \
-    --task-definition-volumes-file "$WERCKER_AWS_ECS_TASK_DEFINITION_VOLUMES_FILE"
+    --task-definition-volumes-file "$WERCKER_AWS_ECS_TASK_DEFINITION_VOLUMES_FILE" \
+    --task-execution-role "$WERCKER_AWS_ECS_TASK_EXECUTION_ROLE"
 else
   python "$WERCKER_STEP_ROOT/main.py" \
     --key "$WERCKER_AWS_ECS_KEY" \
@@ -92,5 +94,6 @@ else
     --task-definition-name "$WERCKER_AWS_ECS_TASK_DEFINITION_NAME" \
     --task-definition-file "$WERCKER_AWS_ECS_TASK_DEFINITION_FILE" \
     --task-definition-volumes-file "$WERCKER_AWS_ECS_TASK_DEFINITION_VOLUMES_FILE" \
+    --task-execution-role "$WERCKER_AWS_ECS_TASK_EXECUTION_ROLE" \
     --service-name "$WERCKER_AWS_ECS_SERVICE_NAME"
 fi
