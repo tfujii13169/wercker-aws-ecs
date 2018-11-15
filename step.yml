@@ -1,5 +1,5 @@
 name: aws-ecs
-version: 0.5.0
+version: 0.5.1
 summary: Deploy service to ECS
 tags:
   - aws
@@ -27,7 +27,7 @@ properties:
   required: false
 - name: task-execution-role
   type: string
-  required: false
+  required: true
 # Step 3: Defining service (optional)
 - name: cluster-name
   type: string
