@@ -75,8 +75,8 @@ if [ -z "$WERCKER_AWS_ECS_SERVICE_NAME" ] && [ -z "$WERCKER_AWS_ECS_CLUSTER_NAME
     --task-definition-file "$WERCKER_AWS_ECS_TASK_DEFINITION_FILE" \
     --task-definition-volumes-file "$WERCKER_AWS_ECS_TASK_DEFINITION_VOLUMES_FILE" \
     --task-execution-role "$WERCKER_AWS_ECS_TASK_EXECUTION_ROLE" \
-    --cpu "$CPU" \
-    --memory "$MEMORY"
+    --cpu "$WERCKER_AWS_ECS_CPU" \
+    --memory "$WERCKER_AWS_ECS_MEMORY"
 elif [ -z "$WERCKER_AWS_ECS_SERVICE_NAME" ]; then
   python "$WERCKER_STEP_ROOT/main.py" \
     --key "$WERCKER_AWS_ECS_KEY" \
@@ -87,8 +87,8 @@ elif [ -z "$WERCKER_AWS_ECS_SERVICE_NAME" ]; then
     --task-definition-file "$WERCKER_AWS_ECS_TASK_DEFINITION_FILE" \
     --task-definition-volumes-file "$WERCKER_AWS_ECS_TASK_DEFINITION_VOLUMES_FILE" \
     --task-execution-role "$WERCKER_AWS_ECS_TASK_EXECUTION_ROLE" \
-    --cpu "$CPU" \
-    --memory "$MEMORY"
+    --cpu "$WERCKER_AWS_ECS_CPU" \
+    --memory "$WERCKER_AWS_ECS_MEMORY"
 else
   python "$WERCKER_STEP_ROOT/main.py" \
     --key "$WERCKER_AWS_ECS_KEY" \
@@ -100,6 +100,6 @@ else
     --task-definition-volumes-file "$WERCKER_AWS_ECS_TASK_DEFINITION_VOLUMES_FILE" \
     --task-execution-role "$WERCKER_AWS_ECS_TASK_EXECUTION_ROLE" \
     --service-name "$WERCKER_AWS_ECS_SERVICE_NAME" \
-    --cpu "$CPU" \
-    --memory "$MEMORY"
+    --cpu "$WERCKER_AWS_ECS_CPU" \
+    --memory "$WERCKER_AWS_ECS_MEMORY"
 fi
