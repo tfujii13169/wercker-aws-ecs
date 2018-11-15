@@ -25,6 +25,9 @@ properties:
 - name: task-definition-volumes-file
   type: string
   required: false
+- name: task-execution-role
+  type: string
+  required: false
 # Step 3: Defining service (optional)
 - name: cluster-name
   type: string
