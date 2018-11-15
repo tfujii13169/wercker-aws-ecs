@@ -28,6 +28,12 @@ properties:
 - name: task-execution-role
   type: string
   required: true
+- name: cpu
+  type: string
+  required: true
+- name: memory
+  type: string
+  required: true
 # Step 3: Defining service (optional)
 - name: cluster-name
   type: string

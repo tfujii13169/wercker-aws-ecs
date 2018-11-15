@@ -24,6 +24,8 @@ parser.add_argument('--task-definition-volumes-file', dest='task_definition_volu
 parser.add_argument('--task-execution-role', dest='task_execution_role', required=False)
 parser.add_argument('--cluster-name', dest='cluster_name', required=False)
 parser.add_argument('--service-name', dest='service_name', required=False)
+parser.add_argument('--cpu', dest='cpu', required=False)
+parser.add_argument('--memory', dest='memory', required=False)
 args = parser.parse_args()
 
 try:
@@ -38,7 +40,7 @@ try:
 
     # Step: Register New Task Definition
     h1("Step: Register New Task Definition")
-    response = ecs.register_task_definition(family=args.task_definition_name, executionRoleArn=args.task_execution_role, file=args.task_definition_file, volumes=args.task_definition_volumes_file)
+    response = ecs.register_task_definition(family=args.task_definition_name, executionRoleArn=args.task_execution_role, file=args.task_definition_file, volumes=args.task_definition_volumes_file, cpu=cpu, memory=memory)
     task_definition_arn = response.get('taskDefinition').get('taskDefinitionArn')
     success("Registering task definition '%s' succeeded" % task_definition_arn)
 
