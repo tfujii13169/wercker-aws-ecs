@@ -40,7 +40,7 @@ try:
 
     # Step: Register New Task Definition
     h1("Step: Register New Task Definition")
-    response = ecs.register_task_definition(family=args.task_definition_name, executionRoleArn=args.task_execution_role, file=args.task_definition_file, volumes=args.task_definition_volumes_file, cpu=cpu, memory=memory)
+    response = ecs.register_task_definition(family=args.task_definition_name, executionRoleArn=args.task_execution_role, file=args.task_definition_file, volumes=args.task_definition_volumes_file, cpu=args.cpu, memory=args.memory)
     task_definition_arn = response.get('taskDefinition').get('taskDefinitionArn')
     success("Registering task definition '%s' succeeded" % task_definition_arn)
 

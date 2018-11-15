@@ -1,5 +1,5 @@
 name: aws-ecs
-version: 0.5.3
+version: 0.5.4
 summary: Deploy service to ECS
 tags:
   - aws
@@ -9,10 +9,10 @@ properties:
 - name: key
   type: string
   required: true
-  name: secret
+- name: secret
   type: string
   required: true
-  name: region
+- name: region
   type: string
   required: false
 # Step 2: Defining task definition
@@ -30,11 +30,11 @@ properties:
   required: true
 - name: cpu
   type: string
-  required: true
+  required: false
   default: 512
 - name: memory
   type: string
-  required: true
+  required: false
   default: 1024
 # Step 3: Defining service (optional)
 - name: cluster-name
