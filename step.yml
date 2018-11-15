@@ -31,9 +31,11 @@ properties:
 - name: cpu
   type: string
   required: true
+  default: 512
 - name: memory
   type: string
   required: true
+  default: 1024
 # Step 3: Defining service (optional)
 - name: cluster-name
   type: string
