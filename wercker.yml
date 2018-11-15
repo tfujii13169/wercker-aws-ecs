@@ -1,4 +1,17 @@
-box: wercker/default
+box: debian:stable-slim
+
 build:
   steps:
-    - validate-wercker-step
+    - shellcheck:
+        files: run.sh
+
+    - script:
+        name: prepare output
+        code: |
+          rm -rf ${WERCKER_ROOT}/.git
+          rm -f "${WERCKER_ROOT}/.gitignore"
+
+publish:
+  steps:
+    - internal/publish-step:
+        owner: fujii-takuhiro
